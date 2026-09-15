@@ -1,0 +1,20 @@
+.page-hero {
+  padding-top: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+.page-hero-title {
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+  margin-top: 0.5rem;
+  max-width: 16ch;
+}
+
+.page-hero-desc {
+  margin-top: 1rem;
+  max-width: 56ch;
+  color: var(--coffee-soft);
+  font-size: 1.05rem;
+}
+
+.page-hero .rule {
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
