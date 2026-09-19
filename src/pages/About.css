@@ -83,7 +83,7 @@
 }
 
 /* ================= HERO ================= */
-.ct-hero {
+.ab-hero {
   position: relative;
   min-height: 55vh;
   display: flex;
@@ -93,7 +93,7 @@
   padding-top: 78px;
 }
 
-.ct-hero-bg {
+.ab-hero-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -102,7 +102,7 @@
   object-position: center 22%;
 }
 
-.ct-hero-scrim {
+.ab-hero-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -113,7 +113,7 @@
   );
 }
 
-.ct-hero-content {
+.ab-hero-content {
   position: relative;
   text-align: center;
   width: 100%;
@@ -121,47 +121,15 @@
   padding-bottom: 2rem;
 }
 
-/* ================= MAP ================= */
-.ct-map-section {
-  background: var(--ivory);
-  padding: clamp(2.5rem, 5vw, 3.5rem) 0;
-  text-align: center;
-}
-
-.ct-map {
-  border-radius: 6px;
-  overflow: hidden;
-  min-height: 380px;
-  border: 1px solid var(--stone-line);
-}
-
-.ct-map iframe {
-  width: 100%;
-  height: 100%;
-  min-height: 380px;
-  border: none;
-  display: block;
-}
-
-.ct-directions {
-  margin-top: 1.5rem;
-  display: inline-block;
-  border-color: var(--gold-deep);
-  color: var(--gold-deep);
-}
-
-.ct-directions:hover {
-  background: var(--gold-deep);
-  color: var(--white);
-}
-
-/* ================= DARK WRAPPER (landmarks + form share one starfield) ================= */
-.ct-dark {
+/* ============ SHARED DARK / STARFIELD BACKDROP ============ */
+/* Wraps Our Story, Why Choose Us and the CTA in one continuous starfield,
+   the same treatment used on the Home rooms/gallery and Contact sections. */
+.ab-dark {
   position: relative;
   overflow: hidden;
 }
 
-.ct-dark-bg {
+.ab-dark-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -174,7 +142,7 @@
   );
 }
 
-.ct-dark-bg::before {
+.ab-dark-bg::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -192,8 +160,9 @@
   opacity: .8;
 }
 
-.ct-landmarks,
-.ct-form-section {
+.ab-story-section,
+.ab-why,
+.ab-cta {
   position: relative;
   z-index: 2;
 }
@@ -219,161 +188,113 @@
   z-index: -1;
 }
 
-/* ---- Landmark cards ---- */
-.ct-landmark-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.ct-landmark-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(212, 175, 110, 0.18);
-  border-radius: 8px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.ct-landmark-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(212, 175, 110, 0.4);
-}
-
-.ct-landmark-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ct-landmark-card h3 {
-  font-family: var(--serif);
-  color: var(--white);
-  font-size: 1.15rem;
-}
-
-.ct-landmark-card p {
-  margin-top: 0.5rem;
-  color: rgba(250, 246, 238, 0.72);
-  font-size: 0.92rem;
-}
-
-@media (max-width: 860px) {
-  .ct-landmark-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ================= FORM + INFO ================= */
-.ct-form-grid {
+/* ================= OUR STORY ================= */
+.ab-story-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
 }
 
-.ct-col-title {
+.ab-story-media {
+  position: relative;
+}
+
+.ab-story-media::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  right: 18px;
+  bottom: 18px;
+  border: 1px solid rgba(212, 175, 110, 0.45);
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.ab-story-media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: clamp(320px, 42vw, 520px);
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 110, 0.18);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+.ab-story-title {
   display: flex;
   flex-direction: column;
   margin-top: 0.4rem;
+  margin-bottom: 1.5rem;
   line-height: 1;
 }
 
-.ct-col-title > span:first-child {
+.ab-story-title > span:first-child {
   font-family: "Pinyon Script", var(--serif);
-  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   color: var(--gold);
 }
 
-.ct-col-title > span:last-child {
+.ab-story-title > span:last-child {
   font-family: var(--serif);
-  font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
   color: var(--white);
   margin-top: -0.1rem;
 }
 
-.ct-col-sub {
-  margin-top: 1rem;
+.ab-story-copy p {
   color: rgba(250, 246, 238, 0.75);
-  font-size: 0.98rem;
-  max-width: 46ch;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin-bottom: 1.1rem;
 }
 
-/* ---- Form ---- */
-.ct-form {
-  margin-top: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
+.ab-story-btn {
+  margin-top: 0.75rem;
+  display: inline-block;
 }
 
-.ct-form-row {
+@media (max-width: 900px) {
+  .ab-story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-story-media {
+    order: -1;
+  }
+
+  .ab-story-media::before {
+    display: none;
+  }
+}
+
+/* ================= WHY CHOOSE US ================= */
+.ab-why-list {
+  max-width: 1100px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.1rem;
+  column-gap: clamp(2rem, 5vw, 4rem);
 }
 
-.ct-form label {
+.ab-why-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  color: rgba(250, 246, 238, 0.8);
-}
-
-.ct-form input,
-.ct-form select,
-.ct-form textarea {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 110, 0.25);
-  border-radius: 4px;
-  padding: 0.75rem 0.9rem;
-  color: var(--white);
-  font-size: 0.95rem;
-  font-family: inherit;
-}
-
-.ct-form input::placeholder,
-.ct-form textarea::placeholder {
-  color: rgba(250, 246, 238, 0.4);
-}
-
-.ct-form input:focus,
-.ct-form select:focus,
-.ct-form textarea:focus {
-  outline: none;
-  border-color: var(--gold);
-}
-
-.ct-form select option {
-  color: #000;
-}
-
-.ct-submit {
-  margin-top: 0.5rem;
-  padding: 0.95rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-}
-
-/* ---- Info panel ---- */
-.ct-info-line {
-  display: flex;
-  gap: 1rem;
   align-items: flex-start;
-  margin-top: 1.75rem;
+  gap: 1.1rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.ct-info-icon {
+.ab-why-list > .ab-why-row:nth-last-child(-n + 2) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ab-why-icon {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
   color: var(--gold);
@@ -382,35 +303,82 @@
   justify-content: center;
 }
 
-.ct-info-line h4 {
-  font-size: 0.95rem;
+.ab-why-row h3 {
+  font-family: var(--serif);
+  font-size: 1.05rem;
   color: var(--white);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 
-.ct-info-line p,
-.ct-info-line a {
-  color: rgba(250, 246, 238, 0.75);
+.ab-why-row p {
   font-size: 0.92rem;
+  color: rgba(250, 246, 238, 0.68);
+  line-height: 1.5;
 }
 
-.ct-info-line a:hover {
+@media (max-width: 760px) {
+  .ab-why-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ab-why-list > .ab-why-row:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+
+  .ab-why-list > .ab-why-row:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ================= CTA ================= */
+.ab-cta {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ab-cta-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+  line-height: 1;
+}
+
+.ab-cta-title > span:first-child {
+  font-family: "Pinyon Script", var(--serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
   color: var(--gold);
 }
 
-.ct-whatsapp {
-  margin-top: 2rem;
-  padding: 0.9rem 1.8rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
+.ab-cta-title > span:last-child {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  color: var(--white);
+  margin-top: -0.15rem;
 }
 
-@media (max-width: 860px) {
-  .ct-form-grid {
-    grid-template-columns: 1fr;
-  }
-  .ct-form-row {
-    grid-template-columns: 1fr;
-  }
+.ab-cta-sub {
+  margin: 1.25rem auto 0;
+  max-width: 50ch;
+  color: rgba(250, 246, 238, 0.75);
+}
+
+.ab-cta-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ab-cta .btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+.ab-cta .btn-outline:hover {
+  background: var(--gold);
+  color: var(--coffee);
 }

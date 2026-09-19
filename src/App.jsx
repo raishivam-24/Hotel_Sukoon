@@ -4,9 +4,9 @@ import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
+import About from "./pages/About"
 import Rooms from "./pages/Rooms";
 import Gallery from "./pages/Gallery";
-import Amenities from "./pages/Amenities";
 import Contact from "./pages/Contact";
 
 export default function App() {
@@ -17,9 +17,9 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/amenities" element={<Amenities />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

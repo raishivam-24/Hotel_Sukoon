@@ -56,6 +56,18 @@ function RoomSlideshow({ slides, alt }) {
     return () => clearInterval(id);
   }, [slides.length]);
 
+  const goPrev = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActive((i) => (i - 1 + slides.length) % slides.length);
+  };
+
+  const goNext = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActive((i) => (i + 1) % slides.length);
+  };
+
   return (
     <div className="hs-slideshow">
       {slides.map((src, i) => (
@@ -67,12 +79,31 @@ function RoomSlideshow({ slides, alt }) {
           className={"hs-slide" + (i === active ? " is-active" : "")}
         />
       ))}
+
       {slides.length > 1 && (
-        <div className="hs-slide-dots">
-          {slides.map((_, i) => (
-            <span key={i} className={i === active ? "is-active" : ""} />
-          ))}
-        </div>
+        <>
+          <button
+            type="button"
+            className="hs-slide-nav hs-slide-prev"
+            onClick={goPrev}
+            aria-label="Previous photo"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className="hs-slide-nav hs-slide-next"
+            onClick={goNext}
+            aria-label="Next photo"
+          >
+            ›
+          </button>
+          <div className="hs-slide-dots">
+            {slides.map((_, i) => (
+              <span key={i} className={i === active ? "is-active" : ""} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
@@ -118,8 +149,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- ROOMS ---------- */}
-      <section className="hs-section hs-rooms">
+      {/* ---------- ROOMS (dark/starfield) ---------- */}
+      <section id="rooms" className="hs-section hs-rooms">
         <div className="wrap">
           <div className="hs-head">
             <p className="hs-eyebrow">Accommodations</p>
@@ -130,8 +161,11 @@ export default function Home() {
           </div>
 
           <div className="hs-room-grid">
-            {ROOMS.map((room) => (
-              <article className="hs-room-card" key={room.slug}>
+            {ROOMS.map((room, i) => (
+              <article
+                className={"hs-room-card" + (i === 1 ? " is-featured" : "")}
+                key={room.slug}
+              >
                 <div className="hs-room-media">
                   <RoomSlideshow slides={room.slides} alt={room.name} />
                   <span className="hs-badge hs-badge-type">{room.badge}</span>
@@ -141,7 +175,9 @@ export default function Home() {
                 <div className="hs-room-body">
                   <div className="hs-room-top">
                     <h3>{room.name}</h3>
-                    <span className="hs-rate">Rates on request</span>
+                    <span className="hs-rate">
+                      {room.price ? `₹${room.price}/night` : "Rates on request"}
+                    </span>
                   </div>
                   <p className="hs-room-desc">{room.short}</p>
 
@@ -169,7 +205,7 @@ export default function Home() {
       </section>
 
       {/* ---------- AMENITIES ---------- */}
-      <section className="hs-section hs-amenities">
+      <section id="amenities" className="hs-section hs-amenities">
         <div className="wrap">
           <div className="hs-head">
             <p className="hs-eyebrow">Amenities</p>
@@ -193,37 +229,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- GALLERY ---------- */}
+      {/* ---------- GALLERY (dark/starfield) ---------- */}
       <section className="hs-section hs-gallery">
         <div className="wrap">
           <div className="hs-head">
             <p className="hs-eyebrow">Gallery</p>
             <h2 className="hs-head-title">
-              <span className="hs-script-sm">A Look</span>
-              <span>Around The Property</span>
+              <span className="hs-script-sm">Timeless</span>
+              <span>Capturing Luxury</span>
             </h2>
           </div>
-        </div>
 
-        <div className="hs-marquee">
-          <div className="hs-marquee-track">
-            {[...GALLERY_STRIP, ...GALLERY_STRIP].map((img, i) => (
+          <div className="hs-gallery-grid">
+            {GALLERY_STRIP.map((img, i) => (
               <figure key={i}>
                 <img src={img.src} alt={img.alt} loading="lazy" />
               </figure>
             ))}
           </div>
-        </div>
 
-        <div className="wrap hs-gallery-action">
-          <Link to="/gallery" className="btn btn-outline">
-            View All Gallery
-          </Link>
+          <div className="hs-gallery-action">
+            <Link to="/gallery" className="btn btn-outline">
+              View All Gallery
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ---------- CTA ---------- */}
+      {/* ---------- CTA (dark/starfield) ---------- */}
       <section className="hs-cta">
+        <div className="hs-cta-bg" />
         <div className="wrap hs-cta-inner">
           <p className="hs-eyebrow">Plan your stay</p>
           <h2 className="hs-cta-title">
