@@ -5,6 +5,8 @@ export const SITE = {
   email: "hotelsukoonbsp@gmail.com",
   address: "Indu Chowk, Bilaspur, Chhattisgarh",
   mapsQuery: "Indu Chowk, Bilaspur, Chhattisgarh",
+  facebook: "https://www.facebook.com/people/hotel-sukoon-bilaspur/61591346140737/",
+  instagram: "https://www.instagram.com/hotel_sukoonn?stkn=bjA2NzNiZjlnbWlq",
 };
 
 export function waLink(message) {

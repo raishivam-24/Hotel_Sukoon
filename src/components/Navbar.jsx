@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { SITE, waLink } from "../data/site";
 import "./Navbar.css";
 
@@ -13,13 +13,22 @@ const LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     setOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className="nav">
+    <header className={"nav" + (scrolled || open ? " is-scrolled" : "")}>
       <div className="wrap nav-inner">
         <NavLink to="/" className="nav-brand" onClick={() => setOpen(false)}>
           <img src="/images/logo.jpg" alt="Hotel Sukoon crest" className="nav-mark" />
